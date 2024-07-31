@@ -43,14 +43,18 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/quarkus-social-1.0.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./target/quarkus-social-1.0-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
+## Related Guides
+
+- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
+
 ## Provided Code
 
-### RESTEasy Reactive
+### RESTEasy JAX-RS
 
-Easily start your Reactive RESTful Web Services
+Easily start your RESTful Web Services
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
