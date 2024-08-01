@@ -1,12 +1,13 @@
 package io.github.dougllasfps.quarkussocial.domain.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +18,6 @@ public class User {
 
     @Column(name = "age")
     private Integer age;
-
-    public User(Long id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
 
     public Long getId() {
         return id;
