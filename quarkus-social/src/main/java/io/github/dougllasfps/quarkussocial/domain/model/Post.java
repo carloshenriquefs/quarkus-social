@@ -5,9 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "posts")
+@Data
 public class Post {
 
     @Id
@@ -23,4 +23,10 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @PrePersist
+    public void prePersist() {
+        setDateTime(LocalDateTime.now());
+    }
+
 }

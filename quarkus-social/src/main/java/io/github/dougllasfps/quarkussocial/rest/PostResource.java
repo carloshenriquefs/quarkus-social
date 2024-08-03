@@ -5,11 +5,15 @@ import io.github.dougllasfps.quarkussocial.domain.model.User;
 import io.github.dougllasfps.quarkussocial.domain.repository.PostRepository;
 import io.github.dougllasfps.quarkussocial.domain.repository.UserRepository;
 import io.github.dougllasfps.quarkussocial.rest.dto.CreatePostRequest;
+import io.github.dougllasfps.quarkussocial.rest.dto.PostResponse;
+import io.quarkus.panache.common.Sort;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.stream.Collectors;
 
 @Path("/users/{userId}/posts")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -45,13 +49,22 @@ public class PostResource {
     }
 
     @GET
-    public Response listPost(@PathParam("userId") Long userId) {
+    public Response listPosts(@PathParam("userId") Long userId) {
         User user = userRepository.findById(userId);
 
         if (user == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        return Response.ok().build();
+        var query = postRepository.find("user",
+                Sort.by("dateTime", Sort.Direction.Descending), user);
+
+        var list = query.list();
+
+        var postResponseList = list.stream()
+                .map(PostResponse::fromEntity)
+                .collect(Collectors.toList());
+
+        return Response.ok(postResponseList).build();
     }
 }
