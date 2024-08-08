@@ -30,9 +30,8 @@ de seguir o usuário.
 │   |  ├── model
 │   |  ├── repository
 │   ├── rest
-│   |  ├── rest
-│   |  |   ├── dto
-│   |  |   ├── resource
+│   |  ├── dto
+│   |  ├── resource  
 ├── tests
 ```
 
@@ -61,13 +60,13 @@ de seguir o usuário.
 
 ##
 
-## 📜 - Documentação:
+## 📜 - Documentação da API:
 
-[URL Swagger](https://localhost:8080/q/swagger-ui)
+[URL - Swagger](https://localhost:8080/q/swagger-ui)
 
 ##
 
-## 🏃 - Subir a aplicação:
+## 🏃 - Subindo a aplicação:
 
 ```shell script
 ./mvnw compile quarkus:dev
